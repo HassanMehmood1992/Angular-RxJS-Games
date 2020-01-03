@@ -1,5 +1,5 @@
 <mat-card class="margin-10">
-  <img src="./assets/witchers.png" />
+  <img [src]="game.img" />
   <mat-card-title class="pl-2 pt-2">{{ game.name }} </mat-card-title>
   <mat-card-subtitle class="pl-2 pt-1"
     >Genre: {{ game.genre }}
@@ -10,7 +10,8 @@
       aria-hidden="false"
       sm
       aria-label="Example home icon"
-      *ngFor="let dummy of ' '.repeat(5).split(''); let x = index"
+      *ngFor="let i of [].constructor(5); let x = index"
+      (click)="updateRating(x + 1)"
       >{{ x < game.rating ? "star" : "star_border" }}</mat-icon
     >
   </div>

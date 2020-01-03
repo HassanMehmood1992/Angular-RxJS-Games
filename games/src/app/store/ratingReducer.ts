@@ -17,14 +17,14 @@ export function reducer(
   // Reducer Actions
   switch (action.type) {
     case GamesActions.UPDATE_GAME_RATING:
-      return state
-        .map(x => ({
-          ...x,
-          rating: randomArray(1, 5)
-        }))
-        .sort(function(a, b) {
-          return b.rating - a.rating;
-        });
+      let index = state.map(game => game.id).indexOf(action.payload.id);
+      return [
+        ...state.slice(0, index),
+        Object.assign({}, state[index], action.payload.id),
+        ...state.slice(index + 1)
+      ].sort(function(a, b) {
+        return b.rating - a.rating;
+      });
     default:
       return state
         .map(x => ({
