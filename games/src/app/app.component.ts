@@ -1,4 +1,8 @@
 import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Game } from "./models/game.model";
+import { AppState } from "./app.state";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -9,6 +13,11 @@ export class AppComponent {
   title = "games";
   breakpoint = 12;
   rowHeight = "370px";
+
+  Games: Observable<Game[]>;
+  constructor(private store: Store<AppState>) {
+    this.Games = store.select("games");
+  }
 
   ngOnInit() {
     this.breakpoint = window.innerWidth <= 800 ? 4 : 12;

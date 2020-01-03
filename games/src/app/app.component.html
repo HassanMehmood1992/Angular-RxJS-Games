@@ -7,34 +7,15 @@
     <span class="avatar">H</span>
   </div>
 </mat-toolbar>
+<div class="pl-6 pt-6">
+  <app-timer-button></app-timer-button>
+</div>
 <mat-grid-list
   [cols]="breakpoint"
   [rowHeight]="rowHeight"
   (window:resize)="onResize($event)"
 >
-  <mat-grid-tile colspan="3" *ngFor="let i of [1,2,3,4,5,6,10]">
-    <mat-card class="no-padding">
-      <img src="./assets/witchers.png" />
-      <mat-card-title class="pl-2 pt-2">Game name </mat-card-title>
-      <mat-card-subtitle class="pl-2 pt-1">Game genera </mat-card-subtitle>
-      <div class="pl-2 pt-2 flex">
-        Rating :
-        <mat-icon aria-hidden="false" sm aria-label="Example home icon"
-          >star</mat-icon
-        >
-        <mat-icon aria-hidden="false" sm aria-label="Example home icon"
-          >star</mat-icon
-        >
-        <mat-icon aria-hidden="false" sm aria-label="Example home icon"
-          >star</mat-icon
-        >
-        <mat-icon aria-hidden="false" sm aria-label="Example home icon"
-          >star_border</mat-icon
-        >
-        <mat-icon aria-hidden="false" sm aria-label="Example home icon"
-          >star_border</mat-icon
-        >
-      </div>
-    </mat-card>
+  <mat-grid-tile colspan="3" *ngFor="let i of Games | async">
+    <app-card [game]="i"></app-card>
   </mat-grid-tile>
 </mat-grid-list>
