@@ -26,6 +26,13 @@ export function reducer(
           return b.rating - a.rating;
         });
     default:
-      return state;
+      return state
+        .map(x => ({
+          ...x,
+          rating: randomArray(1, 5)
+        }))
+        .sort(function(a, b) {
+          return b.rating - a.rating;
+        });
   }
 }

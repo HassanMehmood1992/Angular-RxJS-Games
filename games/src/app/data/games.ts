@@ -4,7 +4,7 @@ export const gamesList = [
         id: 1,
         name: 'Witchers',
         genre: 'Action',
-        rating: 5,
+        rating: 4,
         img: './assets/witchers.png'
     },
     {
