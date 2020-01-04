@@ -38,4 +38,12 @@ describe("AppComponent", () => {
     expect(app.title).toEqual("Games");
   });
 
+  it('should trigger onResize method when window is resized', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+    const spyOnResize = spyOn(component, 'onResize');
+    window.dispatchEvent(new Event('resize'));
+    expect(spyOnResize).toHaveBeenCalled();
+  });
+
 });
