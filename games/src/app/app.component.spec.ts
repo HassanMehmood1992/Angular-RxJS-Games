@@ -8,11 +8,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { StoreModule } from "@ngrx/store";
 import { reducer } from "./store/ratingReducer";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SortingPipe } from './pipes/sorting.pipe';
 
 describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, CardComponent, TimerButtonComponent],
+      declarations: [AppComponent, CardComponent, TimerButtonComponent,SortingPipe],
       imports: [
         BrowserModule,
         MatModule,

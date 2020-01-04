@@ -22,26 +22,17 @@ export function reducer(
         ...state.slice(0, index),
         Object.assign({}, state[index], action.payload.id),
         ...state.slice(index + 1)
-      ].sort(function(a, b) {
-        return b.rating - a.rating;
-      });
+      ];
     case GamesActions.ASSIGN_RANDOM_RATING:
-      return state
-        .map(x => ({
-          ...x,
-          rating: randomArray(1, 5)
-        }))
-        .sort(function(a, b) {
-          return b.rating - a.rating;
-        });
+      return state.map(x => ({
+        ...x,
+        rating: randomArray(1, 5)
+      }));
+
     default:
-      return state
-        .map(x => ({
-          ...x,
-          rating: randomArray(1, 5)
-        }))
-        .sort(function(a, b) {
-          return b.rating - a.rating;
-        });
+      return state.map(x => ({
+        ...x,
+        rating: randomArray(1, 5)
+      }));
   }
 }

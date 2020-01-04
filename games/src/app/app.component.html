@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <img class="img-fluid" width="120px" src="./assets/hexad-logo.png" />
-  <span class="ml-2">{{title}}</span>
+  <span class="ml-2">{{ title }}</span>
   <span fxFlex></span>
   <span mat-button>Hassan Mehmood</span>
   <div class="avatar-container">
@@ -15,7 +15,7 @@
   [rowHeight]="rowHeight"
   (window:resize)="onResize($event)"
 >
-  <mat-grid-tile colspan="3" *ngFor="let i of Games | async" >
+  <mat-grid-tile colspan="3" *ngFor="let i of Games | async | sorting">
     <app-card [game]="i" class="margin-10"></app-card>
   </mat-grid-tile>
 </mat-grid-list>

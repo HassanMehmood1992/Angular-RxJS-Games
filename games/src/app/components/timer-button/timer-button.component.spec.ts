@@ -8,6 +8,7 @@ import { MatModule } from "src/app/modules/mat/mat.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { reducer } from "src/app/store/ratingReducer";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SortingPipe } from 'src/app/pipes/sorting.pipe';
 
 describe("TimerButtonComponent", () => {
   let component: TimerButtonComponent;
@@ -15,7 +16,7 @@ describe("TimerButtonComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, CardComponent, TimerButtonComponent],
+      declarations: [AppComponent, CardComponent, TimerButtonComponent,SortingPipe],
       imports: [
         BrowserModule,
         MatModule,
@@ -38,28 +39,34 @@ describe("TimerButtonComponent", () => {
     expect(component).toBeTruthy();
   });
 
+  it("should return a random number between min and max", async(() => {
+    expect(component.getRandomNumber(1, 5)).toBeLessThan(6);
+    expect(component.getRandomNumber(1, 5)).toBeGreaterThan(0);
+  }));
 
-  // it("should return a random number between min and max", async(() => {
-  //   const fixture = TestBed.createComponent(CardComponent);
-  //   component = fixture.componentInstance;
-  //   component.game = {
-  //     id: 2,
-  //     name: "Resident Evil 4",
-  //     genre: "Horror",
-  //     rating: 5,
-  //     img: "./assets/re4.png"
-  //   };
-  //   fixture.detectChanges();
+  it("should call toggleRating on click", async(() => {
+    spyOn(component, "toggleRating");
 
-  //   spyOn(component, "updateRating");
+    let button = fixture.debugElement.nativeElement.querySelector("button");
+    button.click();
 
-  //   let icon = fixture.debugElement.nativeElement.querySelector("mat-icon");
-  //   icon.click();
+    fixture.whenStable().then(() => {
+      expect(component.toggleRating).toHaveBeenCalled();
+    });
+  }));
 
-  //   fixture.whenStable().then(() => {
-  //     expect(component.updateRating).toHaveBeenCalled();
-  //     expect(component.game.rating).toBe(5);
-  //   });
-  // }));
+  it("should change the label to 'Stop Random Rating", () => {
+    let button = fixture.debugElement.nativeElement.querySelector("button");
+    button.click();
+    fixture.detectChanges();
 
+    expect(component.label).toEqual("Stop Random Rating");
+  });
+
+  it("should switch random rating", () => {
+    let button = fixture.debugElement.nativeElement.querySelector("button");
+    button.click();
+    fixture.detectChanges();
+    expect(component.isRatingOn).toBe(false);
+  });
 });

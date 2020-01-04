@@ -9,9 +9,10 @@ import { StoreModule } from "@ngrx/store";
 import { reducer } from "./store/ratingReducer";
 import { CardComponent } from "./components/card/card.component";
 import { TimerButtonComponent } from "./components/timer-button/timer-button.component";
+import { SortingPipe } from './pipes/sorting.pipe';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, TimerButtonComponent],
+  declarations: [AppComponent, CardComponent, TimerButtonComponent, SortingPipe],
   imports: [
     BrowserModule,
     MatModule,
