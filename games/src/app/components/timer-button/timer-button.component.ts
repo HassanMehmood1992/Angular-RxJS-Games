@@ -35,7 +35,6 @@ export class TimerButtonComponent implements OnInit {
   onStartInterval() {
     this.myIntervalSub = interval(this.getRandomNumber(1000, 5000)).subscribe(
       val => {
-        console.log("Current value:", val);
         this.store.dispatch(new GamesActions.AssignRandomRatings());
       }
     );

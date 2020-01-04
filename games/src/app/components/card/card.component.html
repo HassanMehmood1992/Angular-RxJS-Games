@@ -1,8 +1,8 @@
 <mat-card class="margin-10" class="background">
   <img [src]="game.img" />
-  <mat-card-title class="pl-2 pt-2">{{ game.name }} </mat-card-title>
+  <mat-card-title class="pl-2 pt-2">{{ game?.name }} </mat-card-title>
   <mat-card-subtitle class="pl-2 pt-1"
-    >Genre: {{ game.genre }}
+    >Genre: {{ game?.genre }}
   </mat-card-subtitle>
   <div class="pl-2 pt-2 flex">
     <mat-icon
@@ -12,7 +12,13 @@
       aria-label="Example home icon"
       *ngFor="let i of [].constructor(5); let x = index"
       (click)="updateRating(x + 1)"
-      >{{ x < game.rating ? "star" : "star_border" }}</mat-icon
+      >{{
+        game && game.rating
+          ? x < game.rating
+            ? "star"
+            : "star_border"
+          : "No Rating"
+      }}</mat-icon
     >
   </div>
 </mat-card>
