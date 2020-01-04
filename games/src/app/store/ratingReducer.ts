@@ -25,6 +25,15 @@ export function reducer(
       ].sort(function(a, b) {
         return b.rating - a.rating;
       });
+    case GamesActions.ASSIGN_RANDOM_RATING:
+      return state
+        .map(x => ({
+          ...x,
+          rating: randomArray(1, 5)
+        }))
+        .sort(function(a, b) {
+          return b.rating - a.rating;
+        });
     default:
       return state
         .map(x => ({

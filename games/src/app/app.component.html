@@ -15,7 +15,7 @@
   [rowHeight]="rowHeight"
   (window:resize)="onResize($event)"
 >
-  <mat-grid-tile colspan="3" *ngFor="let i of Games | async">
-    <app-card [game]="i"></app-card>
+  <mat-grid-tile colspan="3" *ngFor="let i of Games | async" >
+    <app-card [game]="i" class="margin-10"></app-card>
   </mat-grid-tile>
 </mat-grid-list>
