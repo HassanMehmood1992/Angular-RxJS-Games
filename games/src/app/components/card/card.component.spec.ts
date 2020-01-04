@@ -47,16 +47,6 @@ describe("CardComponent", () => {
   });
 
   it("should render Genre Horror", () => {
-    const fixture = TestBed.createComponent(CardComponent);
-    component = fixture.componentInstance;
-    component.game = {
-      id: 2,
-      name: "Resident Evil 4",
-      genre: "Horror",
-      rating: 5,
-      img: "./assets/re4.png"
-    };
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector(".mat-card-subtitle").textContent).toContain(
       "Genre: Horror"
@@ -64,17 +54,6 @@ describe("CardComponent", () => {
   });
 
   it("should call update rating on clicking star", async(() => {
-    const fixture = TestBed.createComponent(CardComponent);
-    component = fixture.componentInstance;
-    component.game = {
-      id: 2,
-      name: "Resident Evil 4",
-      genre: "Horror",
-      rating: 5,
-      img: "./assets/re4.png"
-    };
-    fixture.detectChanges();
-
     spyOn(component, "updateRating");
 
     let icon = fixture.debugElement.nativeElement.querySelector("mat-icon");
@@ -82,6 +61,17 @@ describe("CardComponent", () => {
 
     fixture.whenStable().then(() => {
       expect(component.updateRating).toHaveBeenCalled();
+    });
+  }));
+
+  it("should update the game rating to 5", async(() => {
+    spyOn(component, "updateRating");
+
+    let icon = fixture.debugElement.nativeElement.querySelector("mat-icon");
+    icon.click(4 + 1); // because index starts from 0
+
+    fixture.whenStable().then(() => {
+      expect(component.game.rating).toBe(5);
     });
   }));
 });
