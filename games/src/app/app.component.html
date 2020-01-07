@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <img class="img-fluid" width="120px" src="./assets/hexad-logo.png" />
+  <!-- <img class="img-fluid" width="120px" src="./assets/hexad-logo.png" /> -->
   <span class="ml-2">{{ title }}</span>
   <span fxFlex></span>
   <span mat-button>Hassan Mehmood</span>
@@ -10,12 +10,86 @@
 <div class="pl-6 pt-6">
   <app-timer-button></app-timer-button>
 </div>
-<mat-grid-list
-  [cols]="breakpoint"
-  [rowHeight]="rowHeight"
-  (window:resize)="onResize($event)"
->
+<mat-grid-list [cols]="breakpoint" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
   <mat-grid-tile colspan="3" *ngFor="let i of Games | async | sorting">
-    <app-card [game]="i" class="margin-10"></app-card>
+
   </mat-grid-tile>
+  <div fxLayout="row wrap" fxLayoutAlign="flex-start">
+
+
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- 2 loumns wraps -->
+  <div fxLayout="column wrap" fxLayoutAlign="flex-start">
+
+
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+    <mat-card fxFlex="25" fxFlex="205px" class="background m-2">
+      <div>
+        Apple
+      </div>
+      <div fxFlex class="text-right">
+        0
+      </div>
+    </mat-card>
+  </div>
 </mat-grid-list>
