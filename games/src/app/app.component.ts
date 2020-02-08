@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "Games";
+  title = "Toast";
   breakpoint = 12;
   rowHeight = "370px";
 
